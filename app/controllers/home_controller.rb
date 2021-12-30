@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @ext = ExtResource.new
+    @user = User.new(1)
   end
 end

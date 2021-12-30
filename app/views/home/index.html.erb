@@ -1,6 +1,7 @@
-<%#= form_for @ext, url: { action: 'some_action', id: @ext.id, controller: 'ext_resources' } do |form| %>
-<%= form_with model: @ext, url: { action: 'some_action', controller: 'ext_resources', id: @ext.id } do |form| %>
+<%#= form_for @user, url: { action: 'some_action', id: @user.id, controller: 'users' } do |form| %>
+<%= form_with model: @user, url: { action: 'some_action', controller: 'users', id: @user.id } do |form| %>
   <%= form.text_field :id %>
-  <%= form.text_field :status %>
-  <%= form.submit %>
+  <%= form.text_field :name %>
+  <%= form.text_field :username %>
+  <%= form.submit 'Perform some action' %>
 <% end %>
