@@ -1,0 +1,6 @@
+<%#= form_for @ext, url: { action: 'some_action', id: @ext.id, controller: 'ext_resources' } do |form| %>
+<%= form_with model: @ext, url: { action: 'some_action', controller: 'ext_resources', id: @ext.id } do |form| %>
+  <%= form.text_field :id %>
+  <%= form.text_field :status %>
+  <%= form.submit %>
+<% end %>
