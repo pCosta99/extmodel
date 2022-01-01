@@ -7,9 +7,7 @@ class User < ActiveModel::Base
   SOURCE = 'https://jsonplaceholder.typicode.com/users'
   STATUS = %i[smart dumb].freeze
 
-  attr_accessor :id, :name, :username
-
-  #enum status: Hash[*STATUS.collect { |v| [v, v] }.flatten], default: :smart, _prefix: true
+  enum status: Hash[*STATUS.collect { |v| [v, v] }.flatten]
 
   def initialize(id)
     @source = SOURCE
