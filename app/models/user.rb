@@ -9,7 +9,7 @@ class User < ActiveModel::Base
 
   attr_accessor :id, :name, :username
 
-  enum status: Hash[*STATUS.collect { |v| [v, v] }.flatten]
+  #enum status: Hash[*STATUS.collect { |v| [v, v] }.flatten], default: :smart, _prefix: true
 
   def initialize(id)
     @source = SOURCE
