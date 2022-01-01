@@ -9,8 +9,8 @@ class User < ActiveModel::Base
 
   enum status: Hash[*STATUS.collect { |v| [v, v] }.flatten]
 
-  def initialize(id)
-    @source = SOURCE
+  def initialize(id, endpoint = SOURCE)
+    @endpoint = endpoint
     from_json(record(id).body)
   end
 
@@ -27,6 +27,6 @@ class User < ActiveModel::Base
   end
 
   def record(id)
-    HTTParty.get("#{@source}/#{id}")
+    HTTParty.get("#{@endpoint}/#{id}")
   end
 end
