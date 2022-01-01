@@ -4,10 +4,10 @@ require 'active_support/core_ext/hash/slice'
 require 'active_support/core_ext/object/deep_dup'
 
 module ActiveModel
-  # Declare an enum attribute where the values map to integers in the database,
+  # Declare an enum attribute where the values map to integers,
   # but can be queried by name. Example:
   #
-  #   class Conversation < ActiveRecord::Base
+  #   class Conversation < ActiveModel::Base
   #     enum :status, [ :active, :archived ]
   #   end
   #
@@ -27,26 +27,6 @@ module ActiveModel
   #   conversation.status = nil
   #   conversation.status.nil? # => true
   #   conversation.status      # => nil
-  #
-  # Scopes based on the allowed values of the enum field will be provided
-  # as well. With the above example:
-  #
-  #   Conversation.active
-  #   Conversation.not_active
-  #   Conversation.archived
-  #   Conversation.not_archived
-  #
-  # Of course, you can also query them directly if the scopes don't fit your
-  # needs:
-  #
-  #   Conversation.where(status: [:active, :archived])
-  #   Conversation.where.not(status: :active)
-  #
-  # Defining scopes can be disabled by setting +:scopes+ to +false+.
-  #
-  #   class Conversation < ActiveRecord::Base
-  #     enum :status, [ :active, :archived ], scopes: false
-  #   end
   #
   # You can set the default enum value by setting +:default+, like:
   #
