@@ -22,7 +22,7 @@ class User
   end
 
   def perform_action
-    # Hits an API
+    # Hits an API to perform a change or fetches data from the already loaded object
     :noop
   end
 
