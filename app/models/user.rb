@@ -1,16 +1,24 @@
 # frozen_string_literal: true
 
+require 'active_model/enum'
+
 # An external user that can be used as a regular ActiveRecord object
 class User
   include ActiveModel::API
+  include ActiveModel::AttributeMethods
   include ActiveModel::Serializers::JSON
+  extend ActiveModel::Enum
 
-  SOURCE = 'https://jsonplaceholder.typicode.com/users'
+  # SOURCE = 'https://jsonplaceholder.typicode.com/users'
+
+  STATUS = %i[smart dumb].freeze
 
   attr_accessor :id, :name, :username
 
+  enum status: Hash[*STATUS.collect { |v| [v, v] }.flatten]
+
   def initialize(id)
-    @source = SOURCE
+    @source = 'https://jsonplaceholder.typicode.com/users'
     from_json(record(id).body)
   end
 
