@@ -9,8 +9,8 @@ class User
 
   attr_accessor :id, :name, :username
 
-  def initialize(id)
-    @source = SOURCE
+  def initialize(id, endpoint = SOURCE)
+    @endpoint = endpoint
     from_json(record(id).body)
   end
 
@@ -27,6 +27,6 @@ class User
   end
 
   def record(id)
-    HTTParty.get("#{@source}/#{id}")
+    HTTParty.get("#{@endpoint}/#{id}")
   end
 end
